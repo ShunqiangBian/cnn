@@ -18,9 +18,18 @@ model_urls = {
     'wide_resnet101_2': 'https://download.pytorch.org/models/wide_resnet101_2-32ee1156.pth',
 }
 
-
 def conv3x3(in_planes, out_planes, stride=1, groups=1, dilation=1):
     """3x3 convolution with padding"""
+    '''
+    inplanes 输入通道数
+    outplanes 输出通道数
+    kernels_size 卷积核的大小
+    stride 不长
+    padding
+    groups 分组
+    bias 偏差
+    dilation 膨胀
+    '''
     return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride,
                      padding=dilation, groups=groups, bias=False, dilation=dilation)
 
@@ -173,6 +182,15 @@ class ResNet(nn.Module):
                     nn.init.constant_(m.bn2.weight, 0)
 
     def _make_layer(self, block, planes, blocks, stride=1, dilate=False):
+        '''
+        stage/layer
+        :param block: basic/bottleneck
+        :param planes: 输出通道数
+        :param blocks: 块的个数
+        :param stride: 步长 （每个 stage/layer 通过步长为 2 的卷积进行下采样）
+        :param dilate:
+        :return:
+        '''
         norm_layer = self._norm_layer
         downsample = None
         previous_dilation = self.dilation
