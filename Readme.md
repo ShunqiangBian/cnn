@@ -12,5 +12,5 @@
 ### _resnet
 ### resnet18 resnet34 resnet50 resnet101 resnet152
 
-## ![Resnet 解读](https://shunqiang.cf/paper-resnet/)
+## [Resnet 解读](https://shunqiang.cf/paper-resnet/)
 
